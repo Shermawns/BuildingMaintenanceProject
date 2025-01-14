@@ -2,5 +2,6 @@ CREATE TABLE tb_user (
     id BIGSERIAL PRIMARY KEY,
     email VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(200) NOT NULL,
+    role VARCHAR(50) NOT NULL,
     created_date DATE DEFAULT CURRENT_DATE
 );
