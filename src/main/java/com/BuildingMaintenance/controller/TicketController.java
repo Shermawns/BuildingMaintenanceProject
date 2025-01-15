@@ -30,28 +30,28 @@ public class TicketController {
     @GetMapping
     public ResponseEntity<List<TicketResponse>> findAll(){
         List<Ticket> tickets = ticketService.findAll();
-        return ResponseEntity.ok().body(TicketMapper.toTicketResponse(tickets));
+        return ResponseEntity.ok().body(TicketMapper.toTicketResponseList(tickets));
     }
 
     @GetMapping(value = "store/{storeUsername}")
     public ResponseEntity<List<TicketResponse>> findByUsername(@PathVariable String storeUsername) {
         List<Ticket> tickets = ticketService.findByStoreUsername(storeUsername);
-        return ResponseEntity.ok().body(TicketMapper.toTicketResponse(tickets));
+        return ResponseEntity.ok().body(TicketMapper.toTicketResponseList(tickets));
     }
 
     @GetMapping(value = "trilogger/{TriUsername}")
     public ResponseEntity<List<TicketResponse>> findByTriUsername(@PathVariable String triUsername){
         List<Ticket> tickets = ticketService.findByTriUsername(triUsername);
-        return ResponseEntity.ok().body(TicketMapper.toTicketResponse(tickets));
+        return ResponseEntity.ok().body(TicketMapper.toTicketResponseList(tickets));
     }
 
 
     @PostMapping(value = "/create")
-    public ResponseEntity<TicketResponse> createTicket(@RequestBody @Validated TicketRequest ticketRequest, @PathVariable Long id) {
+    public ResponseEntity<TicketResponse> createTicket(@RequestBody TicketRequest ticketRequest) {
 
-        TicketResponse response = ticketService.create(ticketRequest, id);
+        Ticket ticket = ticketService.create(ticketRequest);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        return ResponseEntity.status(HttpStatus.CREATED).body(TicketMapper.toTicketResponse(ticket));
     }
 
 

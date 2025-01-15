@@ -48,31 +48,17 @@ public class TicketService {
         return ticketRepository.findByTriloggerEmail(username);
     }
 
-    public TicketResponse create(TicketRequest ticketRequest, Long id) {
-        Store store = storeRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Store not found with id: " + id));
+    public Ticket create(TicketRequest requestTicketDTO) {
+        Store store = storeRepository.findById(requestTicketDTO.storeId())
+                .orElseThrow(() -> new RuntimeException("Store not found with ID: " + requestTicketDTO.storeId()));
 
         Ticket ticket = new Ticket();
         ticket.setStore(store);
-        ticket.setTitle(ticketRequest.title());
-        ticket.setDescription(ticketRequest.description());
-        ticket.setService(ticketRequest.service());
+        ticket.setTitle(requestTicketDTO.title());
+        ticket.setDescription(requestTicketDTO.description());
+        ticket.setService(requestTicketDTO.service());
 
-        Ticket savedTicket = ticketRepository.save(ticket);
-
-        return new TicketResponse(
-                savedTicket.getTicketId(),
-                savedTicket.getStore(),
-                savedTicket.getTrilogger(),
-                savedTicket.getProvider(),
-                savedTicket.getTitle(),
-                savedTicket.getDescription(),
-                savedTicket.getService(),
-                savedTicket.getStatus(),
-                savedTicket.getPriority(),
-                savedTicket.getCreatedDate(),
-                savedTicket.getDeadline()
-        );
+        return ticketRepository.save(ticket);
     }
 
 
