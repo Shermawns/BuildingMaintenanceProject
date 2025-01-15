@@ -57,9 +57,9 @@ public class TicketController {
 
     @PutMapping(value = "/edit/operations")
     public ResponseEntity<TicketResponse> createTriTicket(@RequestBody @Validated TicketTriRequest ticketTriRequest) {
-        TicketResponse ticketResponse = ticketService.ticketByTrilogger(ticketTriRequest);
+        Ticket updateTicket = ticketService.ticketByTrilogger(ticketTriRequest);
 
-        return ResponseEntity.status(HttpStatus.OK).body(ticketResponse);
+        return ResponseEntity.status(HttpStatus.OK).body(TicketMapper.toTicketResponse(updateTicket));
     }
 
 

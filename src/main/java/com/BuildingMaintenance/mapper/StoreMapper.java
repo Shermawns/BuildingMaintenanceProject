@@ -9,7 +9,7 @@ import lombok.experimental.UtilityClass;
 public class StoreMapper {
 
 
-    public static Store toRequestStoreDTO(StoreRequest requestStoreDTO){
+    public static Store toStore(StoreRequest requestStoreDTO){
         Store store = new Store();
         store.setEmail(requestStoreDTO.email());
         store.setPassword(requestStoreDTO.password());
@@ -20,9 +20,9 @@ public class StoreMapper {
     }
 
 
-    public static StoreResponse toResponseStoreDTO(Store s){
-        StoreResponse responseStoreDTO = new StoreResponse(s.getId(), s.getEmail(), s.getCnpj(), s.getCreatedDate());
+    public static StoreResponse toStoreResponse(Store store){
 
-        return responseStoreDTO;
+        return new StoreResponse(store.getId(), store.getEmail(), store.getCnpj(), store.getCreatedDate());
+
     }
 }

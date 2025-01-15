@@ -64,7 +64,7 @@ public class TicketService {
 
 
 
-    public TicketResponse ticketByTrilogger(TicketTriRequest ticketTriRequest) {
+    public Ticket ticketByTrilogger(TicketTriRequest ticketTriRequest) {
         Ticket ticket = findTicketById(ticketTriRequest.ticketId());
 
         Trilogger trilogger = findTriloggerByUsername(ticketTriRequest.trilogger());
@@ -79,19 +79,7 @@ public class TicketService {
 
         Ticket updatedTicket = ticketRepository.save(ticket);
 
-        return new TicketResponse(
-                updatedTicket.getTicketId(),
-                updatedTicket.getStore(),
-                updatedTicket.getTrilogger(),
-                updatedTicket.getProvider(),
-                updatedTicket.getTitle(),
-                updatedTicket.getDescription(),
-                updatedTicket.getService(),
-                updatedTicket.getStatus(),
-                updatedTicket.getPriority(),
-                updatedTicket.getCreatedDate(),
-                updatedTicket.getDeadline()
-        );
+        return ticketRepository.save(updatedTicket);
     }
 
 

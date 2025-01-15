@@ -7,7 +7,6 @@ import com.BuildingMaintenance.mapper.StoreMapper;
 import com.BuildingMaintenance.service.StoreService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,12 +24,9 @@ public class StoreController {
 
     @PostMapping(value = "/create")
     public ResponseEntity<StoreResponse> create(@RequestBody StoreRequest storeRequest){
-        Store store = StoreMapper.toRequestStoreDTO(storeRequest);
 
-        Store result = storeService.create(store);
+        Store result = storeService.create(StoreMapper.toStore(storeRequest));
 
-        StoreResponse storeResponse = StoreMapper.toResponseStoreDTO(result);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(storeResponse);
+        return ResponseEntity.status(HttpStatus.CREATED).body(StoreMapper.toStoreResponse(result));
     }
 }
