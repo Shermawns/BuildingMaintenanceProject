@@ -6,7 +6,6 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
@@ -14,10 +13,25 @@ import java.util.List;
 @Table(name = "tb_store")
 public class Store extends User {
 
+
     @Column(unique = true, nullable = false, length = 100)
     private String cnpj;
 
     @OneToMany(mappedBy = "store")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Ticket> tickets = new ArrayList<>();
+
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
 }

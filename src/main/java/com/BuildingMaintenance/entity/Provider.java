@@ -6,8 +6,6 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
@@ -21,4 +19,17 @@ public class Provider extends User {
     @OneToMany(mappedBy = "provider")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Ticket> tickets = new ArrayList<>();
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
 }
