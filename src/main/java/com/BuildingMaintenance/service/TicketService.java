@@ -62,8 +62,6 @@ public class TicketService {
     }
 
 
-
-
     public Ticket ticketByTrilogger(TicketTriRequest ticketTriRequest) {
         Ticket ticket = findTicketById(ticketTriRequest.ticketId());
 

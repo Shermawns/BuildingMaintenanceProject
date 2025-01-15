@@ -19,11 +19,9 @@ public class TicketController {
 
     private final TicketService ticketService;
 
-    private final StoreRepository storeRepository;
 
-    public TicketController(TicketService ticketService, StoreRepository storeRepository) {
+    public TicketController(TicketService ticketService) {
         this.ticketService = ticketService;
-        this.storeRepository = storeRepository;
     }
 
 

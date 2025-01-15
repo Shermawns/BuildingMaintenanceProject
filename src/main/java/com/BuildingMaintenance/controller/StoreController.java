@@ -1,16 +1,19 @@
 package com.BuildingMaintenance.controller;
 
+import com.BuildingMaintenance.controller.request.ProviderRequest;
 import com.BuildingMaintenance.controller.request.StoreRequest;
+import com.BuildingMaintenance.controller.response.ProviderResponse;
 import com.BuildingMaintenance.controller.response.StoreResponse;
+import com.BuildingMaintenance.entity.Provider;
 import com.BuildingMaintenance.entity.Store;
+import com.BuildingMaintenance.mapper.ProviderMapper;
 import com.BuildingMaintenance.mapper.StoreMapper;
 import com.BuildingMaintenance.service.StoreService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/v1/store")
@@ -29,4 +32,29 @@ public class StoreController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(StoreMapper.toStoreResponse(result));
     }
+
+    @GetMapping
+    public ResponseEntity<List<StoreResponse>> findAll(){
+
+        List<Store> list = storeService.findAll();
+
+        return ResponseEntity.ok().body(StoreMapper.toListStore(list));
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<String> delete(@PathVariable Long id){
+
+        storeService.delete(id);
+
+        return ResponseEntity.status(HttpStatus.OK).body("Store deleted successfully");
+    }
+
+    @PutMapping(value = "/edit/{id}")
+    public ResponseEntity<StoreResponse> edit(@RequestBody StoreRequest storeRequest, @PathVariable Long id){
+
+        Store editStore = storeService.updateStore(id, StoreMapper.toStore(storeRequest));
+
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(StoreMapper.toStoreResponse(editStore));
+    }
+
 }
