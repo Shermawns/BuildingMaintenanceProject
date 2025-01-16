@@ -1,71 +1,163 @@
-BuildingMaintenance / Sistema de manutenção predial
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuildingMaintenance - Sistema de Manutenção Predial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            color: #333;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
 
-Descrição:
+<h1>🚧 BuildingMaintenance</h1>
+<h2>🛠️ Sistema de Manutenção Predial</h2>
 
-  Inspirado pela empresa na qual tenho o imenso prazer de fazer parte, a Trilogo, desenvolvi um clone de sua plataforma de sistema de manutenção predial. O projeto foi criado com Java e Spring Boot, utilizando PostgreSQL como banco de dados. Seu objetivo é otimizar o gerenciamento de manutenções prediais, permitindo que as lojas criem tickets para solicitar serviços.
-  Cada ticket contém informações como o ID da loja, título da demanda, descrição do problema e o tipo de serviço necessário (como, por exemplo, energia, ar condicionado, forro, vazamento, entre outros). Após a criação, apenas os Triloggers (funcionários da empresa de manutenção predial) têm a permissão para editar os tickets.
-  Os Triloggers são responsáveis por atribuir um número ao ticket, selecionar o Trilogger encarregado de acompanhar a demanda, indicar o prestador que executará o serviço, estabelecer o prazo de retorno do prestador e corrigir quaisquer erros nas informações do serviço. Além disso, podem atualizar o status do ticket (que pode ser "aberto", "em execução", "executado" ou "cancelado") e definir sua prioridade (variando entre "baixa", "média", "alta" ou "emergencial").Tecnologias Utilizadas
+<p>Inspirado pela empresa na qual tenho o imenso prazer de fazer parte, a <strong>Trílogo</strong>, desenvolvi um clone de sua plataforma de sistema de manutenção predial. O objetivo do projeto é <strong>otimizar o gerenciamento de manutenções prediais</strong>, permitindo que lojas criem tickets para solicitar serviços de forma simples e eficiente.</p>
 
-Descrição do Diagrama UML
+<p>O projeto foi desenvolvido com <strong>Java</strong> e <strong>Spring Boot</strong>, utilizando <strong>PostgreSQL</strong> como banco de dados, e inclui funcionalidades completas de gerenciamento de tickets de manutenção.</p>
 
-Minha Jornada com o Projeto e o Diagrama UML
+<hr>
 
-Este diagrama UML representa a culminação de um longo processo de desenvolvimento e refino deste projeto, que comecei em dezembro do ano passado. Ele foi concebido para expressar de forma clara e objetiva a estrutura e o funcionamento do sistema BuildingMaintenance.
+<h2>✨ Funcionalidades</h2>
+<ul>
+    <li>🏢 <strong>Lojas</strong> podem criar tickets contendo:
+        <ul>
+            <li>ID da loja, título da demanda, descrição do problema, tipo de serviço (energia, ar condicionado, vazamento, entre outros).</li>
+        </ul>
+    </li>
+    <li>👷 Apenas <strong>Triloggers</strong> (funcionários) podem editar os tickets, atribuindo:
+        <ul>
+            <li>Número ao ticket, responsável pela demanda, provedor para execução do serviço, prazo de retorno, entre outros.</li>
+        </ul>
+    </li>
+    <li>⚙️ <strong>Triloggers</strong> também podem:
+        <ul>
+            <li>Atualizar o status do ticket (Aberto, Em execução, Executado, Cancelado).</li>
+            <li>Definir a prioridade do ticket (Baixa, Média, Alta ou Emergencial).</li>
+        </ul>
+    </li>
+</ul>
 
-Ao longo do desenvolvimento, enfrentei diversos desafios, o que me levou a revisar e refazer algumas partes do projeto. Cada iteração foi essencial para melhorar minha compreensão dos requisitos, ajustar funcionalidades e criar um modelo que fosse funcional e bem estruturado.
+<hr>
 
-Depois de muitas horas de dedicação, cheguei a este protótipo final de UML. Ele sintetiza a essência do sistema, refletindo tanto o aprendizado técnico quanto o cuidado em alinhar as funcionalidades às necessidades reais de um sistema de manutenção predial eficiente. Este modelo serviu como guia central para o desenvolvimento do projeto, conectando todas as ideias e funcionalidades de forma 
+<h2>📊 Descrição do Diagrama UML</h2>
+<p>Este diagrama UML foi o resultado de um longo processo de desenvolvimento e refino, iniciado em dezembro do ano passado. Ele sintetiza a estrutura do sistema <strong>BuildingMaintenance</strong> e foi fundamental para conectar todas as ideias e funcionalidades.</p>
 
-![image](https://github.com/user-attachments/assets/1b6d3a61-fddb-4438-9871-8b82e3744d00)
-    
-    
-    User: Classe base para usuários, que pode se especializar em:
-        Store (Lojas que criam tickets de manutenção),
-        Provider (Provedores que realizam os serviços),
-        Trilogger (Funcionários que gerenciam os tickets e serviços).
-
-    Ticket: Entidade central que representa as demandas de manutenção. Cada ticket contém informações como título, descrição, tipo de serviço, prazo, prioridade e status.
-
-    Enums: Definem os valores específicos para os campos:
-        BuildingType: Tipos de serviços (energia, ar condicionado, vazamentos, etc.).
-        TicketStatus: Status do ticket (aberto, em execução, executado, cancelado).
-        RolePriority: Prioridade do ticket (baixa, média, alta).
+<h3>📂 Estrutura Representada no Diagrama</h3>
 
 
-Tecnologias Utilizadas
+<img src="https://github.com/user-attachments/assets/1b6d3a61-fddb-4438-9871-8b82e3744d00" alt="Diagrama UML">
 
-  Java 21: A linguagem de programação principal utilizada no desenvolvimento do projeto.
-  Spring Boot 3.4.1: Framework utilizado para facilitar o desenvolvimento de aplicações Java, com configuração automática e criação de componentes.
-  Spring Data JPA: Facilita a interação com o banco de dados utilizando o padrão JPA para persistência de dados.
-  Spring Boot Validation: Biblioteca usada para validar entradas em APIs REST.
-  Spring Boot DevTools: Ferramenta para melhorar o ciclo de desenvolvimento, incluindo reinicialização automática e outras facilidades.
-  Springdoc OpenAPI: Utilizado para gerar a documentação da API de forma interativa com Swagger.
-  PostgreSQL: Banco de dados relacional utilizado para armazenar as informações.
-  Flyway: Ferramenta de migração de banco de dados que permite versionamento e controle de mudanças nas estruturas do banco de dados.
-  Lombok: Biblioteca que reduz o código boilerplate, gerando automaticamente getters, setters, construtores, entre outros.
-  JUnit 5: Framework para testes automatizados da aplicação.
 
-Como Rodar
+<ul>
+    <li><strong>User</strong>: Classe base que pode se especializar em:
+        <ul>
+            <li><strong>Store</strong>: Lojas que criam tickets.</li>
+            <li><strong>Provider</strong>: Provedores que executam os serviços.</li>
+            <li><strong>Trilogger</strong>: Funcionários que gerenciam os tickets.</li>
+        </ul>
+    </li>
+    <li><strong>Ticket</strong>: Entidade principal contendo informações como título, descrição, tipo de serviço, prazo, prioridade e status.</li>
+    <li><strong>Enums</strong>:
+        <ul>
+            <li><strong>BuildingType</strong>: Define os tipos de serviços (Energia, Ar condicionado, Vazamento, etc.).</li>
+            <li><strong>TicketStatus</strong>: Define o status do ticket (Aberto, Em execução, Executado, Cancelado).</li>
+            <li><strong>RolePriority</strong>: Define a prioridade (Baixa, Média, Alta, Emergencial).</li>
+        </ul>
+    </li>
+</ul>
 
-    Clone o repositório:
+<hr>
 
+<h2>🚀 Tecnologias Utilizadas</h2>
+<ul>
+    <li>☕ <strong>Java 21</strong>: Linguagem principal do projeto.</li>
+    <li>🌱 <strong>Spring Boot 3.4.1</strong>: Framework para desenvolvimento rápido de aplicações.</li>
+    <li>📂 <strong>Spring Data JPA</strong>: Persistência de dados com JPA.</li>
+    <li>🔒 <strong>Spring Boot Validation</strong>: Validação de entradas em APIs REST.</li>
+    <li>⚡ <strong>Spring Boot DevTools</strong>: Melhorias no ciclo de desenvolvimento.</li>
+    <li>📜 <strong>Springdoc OpenAPI</strong>: Documentação interativa com Swagger.</li>
+    <li>🐘 <strong>PostgreSQL</strong>: Banco de dados relacional.</li>
+    <li>🛠️ <strong>Flyway</strong>: Controle de versão e migração do banco de dados.</li>
+    <li>✨ <strong>Lombok</strong>: Redução de código boilerplate.</li>
+    <li>✅ <strong>JUnit 5</strong>: Framework de testes automatizados.</li>
+</ul>
+
+<hr>
+
+<h2>📖 Como Rodar o Projeto</h2>
+<h3>1. Clone o repositório:</h3>
+<pre>
 git clone https://github.com/seurepositorio/BuildingMaintenance.git
+</pre>
 
-Entre na pasta do projeto:
+<h3>2. Entre na pasta do projeto:</h3>
+<pre>
+cd BuildingMaintenance
+</pre>
 
-    cd BuildingMaintenance
-
-    Configure o banco de dados PostgreSQL no arquivo application.properties:
-
+<h3>3. Configure o banco de dados PostgreSQL:</h3>
+<pre>
 spring.datasource.url=jdbc:postgresql://localhost:5432/buildingmaintenance
 spring.datasource.username=usuario
 spring.datasource.password=senha
 spring.jpa.hibernate.ddl-auto=update
+</pre>
 
-    Execute o projeto com Maven ou sua IDE de preferência:
-
+<h3>4. Execute o projeto com Maven ou sua IDE de preferência:</h3>
+<pre>
 ./mvnw spring-boot:run
+</pre>
 
-Acesse a documentação da API no Swagger UI:
+<h3>5. Acesse a documentação da API no Swagger UI:</h3>
+<p><a href="http://localhost:8080/swagger-ui/index.html" target="_blank">http://localhost:8080/swagger-ui/index.html</a></p>
 
-http://localhost:8080/swagger-ui/index.html
+</body>
+</html>
