@@ -14,10 +14,10 @@
 
 <p>Após a criação do ticket, apenas os <strong>Triloggers</strong> (funcionários da empresa de manutenção predial) têm permissão para editá-lo. Suas responsabilidades incluem:</p>
 <ul>
-    <li>🔢 Atribuir um número ao ticket</li>
+    <li>🔢 Atribuir um número ao ticket para localizar a demanda</li>
     <li>👷 Selecionar o Trilogger responsável por acompanhar a demanda</li>
     <li>🤝 Indicar o prestador que executará o serviço</li>
-    <li>📅 Estabelecer o prazo de retorno do prestador</li>
+    <li>📅 Estabelecer a deadline do prestador para dar um retorno</li>
     <li>🛠️ Corrigir erros nas informações do serviço</li>
 </ul>
 
