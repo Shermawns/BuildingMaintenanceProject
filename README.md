@@ -1,34 +1,45 @@
 <body>
 
 <h1>🚧 BuildingMaintenance</h1>
-<h2>🛠️ Sistema de Manutenção Predial</h2>
 
-<p>Inspirado pela empresa na qual tenho o imenso prazer de fazer parte, a <strong>Trílogo</strong>, desenvolvi um clone de sua plataforma de sistema de manutenção predial. O objetivo do projeto é <strong>otimizar o gerenciamento de manutenções prediais</strong>, permitindo que lojas criem tickets para solicitar serviços de forma simples e eficiente.</p>
+<p>Inspirado pela empresa na qual tenho o imenso prazer de fazer parte, a <strong>Trílogo</strong>, desenvolvi um clone de sua plataforma de sistema de manutenção predial. O projeto foi criado com <strong>Java</strong> e <strong>Spring Boot</strong>, utilizando <strong>PostgreSQL</strong> como banco de dados. Seu objetivo é <strong>otimizar o gerenciamento de manutenções prediais</strong>, permitindo que as lojas criem tickets para solicitar serviços.</p>
 
-<p>O projeto foi desenvolvido com <strong>Java</strong> e <strong>Spring Boot</strong>, utilizando <strong>PostgreSQL</strong> como banco de dados, e inclui funcionalidades completas de gerenciamento de tickets de manutenção.</p>
-
-<hr>
-
-<h2>✨ Funcionalidades</h2>
+<p>Cada ticket contém as seguintes informações:</p>
 <ul>
-    <li>🏢 <strong>Lojas</strong> podem criar tickets contendo:
+    <li>🏢 <strong>ID da loja</strong></li>
+    <li>📝 <strong>Título da demanda</strong></li>
+    <li>📄 <strong>Descrição do problema</strong></li>
+    <li>🔧 <strong>Tipo de serviço</strong> (energia, ar condicionado, forro, vazamento, entre outros)</li>
+</ul>
+
+<p>Após a criação do ticket, apenas os <strong>Triloggers</strong> (funcionários da empresa de manutenção predial) têm permissão para editá-lo. Suas responsabilidades incluem:</p>
+<ul>
+    <li>🔢 Atribuir um número ao ticket</li>
+    <li>👷 Selecionar o Trilogger responsável por acompanhar a demanda</li>
+    <li>🤝 Indicar o prestador que executará o serviço</li>
+    <li>📅 Estabelecer o prazo de retorno do prestador</li>
+    <li>🛠️ Corrigir erros nas informações do serviço</li>
+</ul>
+
+<p>Além disso, os Triloggers podem:</p>
+<ul>
+    <li>📌 Atualizar o status do ticket:
         <ul>
-            <li>ID da loja, título da demanda, descrição do problema, tipo de serviço (energia, ar condicionado, vazamento, entre outros).</li>
+            <li>"Aberto"</li>
+            <li>"Em execução"</li>
+            <li>"Executado"</li>
+            <li>"Cancelado"</li>
         </ul>
     </li>
-    <li>👷 Apenas <strong>Triloggers</strong> (funcionários) podem editar os tickets, atribuindo:
+    <li>⚡ Definir a prioridade do ticket:
         <ul>
-            <li>Número ao ticket, responsável pela demanda, provedor para execução do serviço, prazo de retorno, entre outros.</li>
-        </ul>
-    </li>
-    <li>⚙️ <strong>Triloggers</strong> também podem:
-        <ul>
-            <li>Atualizar o status do ticket (Aberto, Em execução, Executado, Cancelado).</li>
-            <li>Definir a prioridade do ticket (Baixa, Média, Alta ou Emergencial).</li>
+            <li>"Baixa"</li>
+            <li>"Média"</li>
+            <li>"Alta"</li>
+            <li>"Emergencial"</li>
         </ul>
     </li>
 </ul>
-
 <hr>
 
 <h2>📊 Descrição do Diagrama UML</h2>
