@@ -11,6 +11,7 @@ import com.BuildingMaintenance.mapper.StoreMapper;
 import com.BuildingMaintenance.service.StoreService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class StoreController {
     }
 
     @PostMapping(value = "/create")
-    public ResponseEntity<StoreResponse> create(@RequestBody StoreRequest storeRequest){
+    public ResponseEntity<StoreResponse> create(@RequestBody @Validated StoreRequest storeRequest){
 
         Store result = storeService.create(StoreMapper.toStore(storeRequest));
 
@@ -50,7 +51,7 @@ public class StoreController {
     }
 
     @PutMapping(value = "/edit/{id}")
-    public ResponseEntity<StoreResponse> edit(@RequestBody StoreRequest storeRequest, @PathVariable Long id){
+    public ResponseEntity<StoreResponse> edit(@Validated @RequestBody StoreRequest storeRequest, @PathVariable Long id){
 
         Store editStore = storeService.updateStore(id, StoreMapper.toStore(storeRequest));
 

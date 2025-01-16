@@ -7,6 +7,7 @@ import com.BuildingMaintenance.mapper.ProviderMapper;
 import com.BuildingMaintenance.service.ProviderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class ProviderController {
     }
 
     @PostMapping(value = "/create")
-    public ResponseEntity<ProviderResponse> create(@RequestBody ProviderRequest providerRequest){
+    public ResponseEntity<ProviderResponse> create(@Validated @RequestBody ProviderRequest providerRequest){
 
         Provider provider = providerService.create(ProviderMapper.toProvider(providerRequest));
 
@@ -47,7 +48,7 @@ public class ProviderController {
 
 
     @PutMapping(value = "/edit/{id}")
-    public ResponseEntity<ProviderResponse> edit(@RequestBody ProviderRequest providerRequest, @PathVariable Long id){
+    public ResponseEntity<ProviderResponse> edit(@Validated @RequestBody ProviderRequest providerRequest, @PathVariable Long id){
 
         Provider editProvider = providerService.updateProvider(id, ProviderMapper.toProvider(providerRequest));
 

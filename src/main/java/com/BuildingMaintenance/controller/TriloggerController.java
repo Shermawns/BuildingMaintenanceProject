@@ -7,6 +7,7 @@ import com.BuildingMaintenance.mapper.TriloggerMapper;
 import com.BuildingMaintenance.service.TriloggerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class TriloggerController {
     }
 
     @PostMapping(value = "/create")
-    public ResponseEntity<TriloggerResponse> create (@RequestBody TriloggerRequest triloggerRequest){
+    public ResponseEntity<TriloggerResponse> create (@Validated @RequestBody TriloggerRequest triloggerRequest){
 
         Trilogger trilogger = triloggerService.create(TriloggerMapper.toTrilogger(triloggerRequest));
 
@@ -47,7 +48,7 @@ public class TriloggerController {
     }
 
     @PutMapping(value = "/edit/{id}")
-    public ResponseEntity<TriloggerResponse> edit(@RequestBody TriloggerRequest triloggerRequest, @PathVariable Long id){
+    public ResponseEntity<TriloggerResponse> edit(@Validated @RequestBody TriloggerRequest triloggerRequest, @PathVariable Long id){
 
         Trilogger editTrilogger = triloggerService.updateTrilogger(id, TriloggerMapper.toTrilogger(triloggerRequest));
 
